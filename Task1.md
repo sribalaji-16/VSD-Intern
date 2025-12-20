@@ -208,8 +208,9 @@ Open the serial terminal:
    ```bash
    make terminal
    ```
+### Obtained output
 <img width="1856" height="1047" alt="Screenshot From 2025-12-20 17-45-44" src="https://github.com/user-attachments/assets/32be75d3-0650-4d1d-8ffc-660b540fd3fd" />
-
+My output is not the same as actual expected output,where my terminal had been waiting for so long to get the data from fpga but it fails. I will update the file output once after I get the expected once.  
 
 # Conclusion
 The workspace was initialized and fully verified within a GitHub Codespaces Linux environment.
@@ -218,4 +219,4 @@ Validation Task
 - Source Repository: vsd-riscv-v2
 - Directory: samples/
 
-To confirm the stability of the toolchain and environment, a standard RISC-V reference program was successfully compiled and simulated using Spike.
+To confirm the stability of the toolchain and environment, a standard RISC-V reference program was successfully compiled and simulated using Spike and successfully completed building and flashing on FPGA.
