@@ -131,6 +131,85 @@ Sum from 1 to 9 is 45
 <img width="1854" height="965" alt="image" src="https://github.com/user-attachments/assets/3b022413-a68e-4e7a-8103-95908a2e071c" />
 
 
+# Clone and Run VSDFPGA Labs
+
+## Hardware Connections (VSDSquadron FPGA mini)
+| Source Component | Source Pin/Port | Destination Component       | Destination Pin/Port |
+|------------------|-----------------|------------------------------|----------------------|
+| CH340            | TX              | [VSDFPGA Board](https://www.vlsisystemdesign.com/vsdsquadronfm/)  | 3                    |
+| CH340            | RXD             | [VSDFPGA Board](https://www.vlsisystemdesign.com/vsdsquadronfm/)  | 4                    |
+| [VSDFPGA Board](https://www.vlsisystemdesign.com/vsdsquadronfm/)       | GND             | FPGA Board                   | 23                   |
+| CH340            | 3.3V            | CH340                        | VCC                  |
+
+- Connect the [VSDSquadron FPGA mini](https://www.vlsisystemdesign.com/vsdsquadronfm/) board to one USB port.
+- Connect the CH340 module to another USB port.
+
+## Setup 
+Once the RISC-V reference flow works, clone the FPGA labs repository inside the same Codespace:
+```sh
+git clone https://github.com/vsdip/vsdfpga_labs.git
+cd vsdfpga_labs
+```
+
+## Executing Risc-v logo program on CodeSpace
+
+Move to the cloned repo of vsdfpga_labs to this `Firmware` directory using the given below
+```sh
+cd vsdfpga_labs/basicRISCV/Firmware/
+```
+<img width="1854" height="965" alt="Screenshot From 2025-12-20 16-13-42" src="https://github.com/user-attachments/assets/f7073506-5521-4fb8-9dbb-7e0c31163232" />
+
+
+Then run the risc_logo.c file (or edit the changes iff required) like how we used to do previously 
+
+<img width="1854" height="965" alt="Screenshot From 2025-12-20 16-31-13" src="https://github.com/user-attachments/assets/2947ae37-1a11-448f-9001-36cb7ec573d5" />
+
+<img width="1854" height="965" alt="Screenshot From 2025-12-20 16-31-24" src="https://github.com/user-attachments/assets/30e5e73f-81bc-48a7-b492-1d0b8fc20252" />
+
+
+
+## `Building & Flashing`
+Review the RISC-V logo code (do not modify):
+   ```bash
+   cd vsdfpga_labs/basicRISCV/Firmware
+   nano riscv_logo.c  
+   make riscv_logo.bram.hex
+   ```
+You should see the below messages
+<img width="1845" height="800" alt="Screenshot From 2025-12-20 17-10-40" src="https://github.com/user-attachments/assets/aa73c036-586f-445b-92e7-42c5a624d689" />
+
+
+
+Build the firmware and FPGA bitstream:
+   ```bash
+   cd ../RTL
+   make clean
+   make build
+   ```
+
+<img width="1856" height="1047" alt="Screenshot From 2025-12-20 17-14-42" src="https://github.com/user-attachments/assets/d76c4d9c-66d6-4ead-983d-c2b312c8953e" />
+
+
+Flash to FPGA:
+   ```bash
+   sudo make flash
+   ```
+
+<img width="1856" height="1047" alt="Screenshot From 2025-12-20 17-18-20" src="https://github.com/user-attachments/assets/266e4d7c-3034-4836-8043-30e3d8b0e761" />
+
+![VSDSquadron FPGA mini](https://github.com/user-attachments/assets/2a5c2601-ca20-4462-bb87-fb3f2bf31e3f)
+
+
+
+https://github.com/user-attachments/assets/4b6e8b9b-c5ce-49ac-80e4-9bdace2b974f
+
+## Running the Lab
+Open the serial terminal:
+   ```bash
+   make terminal
+   ```
+<img width="1856" height="1047" alt="Screenshot From 2025-12-20 17-45-44" src="https://github.com/user-attachments/assets/32be75d3-0650-4d1d-8ffc-660b540fd3fd" />
+
 
 # Conclusion
 The workspace was initialized and fully verified within a GitHub Codespaces Linux environment.
